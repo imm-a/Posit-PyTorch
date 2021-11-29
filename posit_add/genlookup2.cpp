@@ -23,7 +23,7 @@ Real GetNum33(const Real& a) {
 
     // Returns a pointer to a newly created 2d array the array2D has size [height x width]
 
-std::string** create2DArray(int height, int width, int nval, int esval){
+std::string** create2DArray(int height, int width, int nval, int esval, int approx_type){
 	//using Real = sw::universal::posit<8,1>; 	
 	std::fstream newfile;
     std::fstream newfile1;
@@ -39,8 +39,12 @@ std::string** create2DArray(int height, int width, int nval, int esval){
                   Arr[h][w] = "x";
            }
       }
-    newfile.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
- 	newfile1.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+    std::string approx = "Accurate";
+        
+    newfile.open("lookup/PositAdder_V/"+approx+"/testcases"+std::to_string(nval)+std::to_string(0)+".txt", ios::in);
+ 	newfile1.open("lookup/PositAdder_V/"+approx+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+    //newfile.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+ 	//newfile1.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
 	if(newfile.is_open() && newfile1.is_open()){
 		std::string tp;
 		std::string tp1;

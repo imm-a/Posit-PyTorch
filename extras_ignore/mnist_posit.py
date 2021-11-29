@@ -17,7 +17,7 @@ def posit_forward(x,i,approx_type):
     #     add_bias[n*N:n*N+N] = add_bias1
     mul = torch.ops.my_ops.mat_mul(x,weights[i],x.shape[0],x.shape[1],weights[i].shape[1],8,approx_type)
     
-    add_bias = torch.ops.my_ops.posit_add(mul,bias[i],mul.shape[0],mul.shape[1],8)
+    add_bias = torch.ops.my_ops.posit_add(mul,bias[i],mul.shape[0],mul.shape[1],8,0)
     #add_bias = mul + bias[i]
     return add_bias
 class TwoLayerNet(torch.nn.Module):
@@ -115,7 +115,7 @@ for t in range((n - 1) // N + 1):
     loss.backward()
     optimizer.step()
 print(accuracy(model(x_train),y_train))
-print(accuracy(model(x_valid[0:16*N]),y_valid[0:16*N]))
+print(accuracy(model(x_valid[0:4*N]),y_valid[0:4*N]))
 
 #Get layer weights
 weights = []
@@ -132,6 +132,6 @@ from datetime import datetime
 start=datetime.now()
 
 test_model = TwoLayerNet(layers,activ,True)
-print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:16*N]),y_valid[0:16*N]))
+print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:4*N]),y_valid[0:4*N]))
 
 print('time elapsed: ',(datetime.now()-start).seconds)

@@ -63,11 +63,11 @@ torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t d
   //return output.clone();
 	
 }
-torch::Tensor posit_add(torch::Tensor inputmat1,torch::Tensor inputmat2,int64_t dim1, int64_t dim2, int64_t n_add){
+torch::Tensor posit_add(torch::Tensor inputmat1,torch::Tensor inputmat2,int64_t dim1, int64_t dim2, int64_t n_add, int64_t approx_type){
 	const int n1=8;	
 	const int es1=3;
 	//static string** Arr = create2DArrayMUL(256,256, n1, es1); // generating lookup table
-	static string** Arr_add = create2DArray(256,256, n1, es1);
+	static string** Arr_add = create2DArray(256,256, n1, es1,approx_type);
 	int i;
 	torch::Tensor output;
 	//torch::Tensor output_final;
