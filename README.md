@@ -10,7 +10,7 @@ Current status: Posit inference enabled using Linear layers and lookup tables. P
 
 To run:
  - Edit lists with layers and activations in mnist_posit.py
- - python3 mnist_posit.py
+ - python3 posit_test.py
 
 To be improved/fixed:
  - Lookup table values are const int in mat_mul/op.cpp and posit_add/op.cpp which have to be changed manually
