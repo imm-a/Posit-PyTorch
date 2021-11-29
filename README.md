@@ -1,5 +1,6 @@
 # Posit-PyTorch
 C++ operators: mat_mul and posit_add
+
 Current status: Posit inference enabled using Linear layers and lookup tables. Parallel computation enabled using OpenMP. Accurate and 1-bit removed Approx Posit Multiplier available.
 
 To run:
