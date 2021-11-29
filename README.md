@@ -1,6 +1,8 @@
 # Posit-PyTorch
 C++ operators: mat_mul and posit_add
+
 NLayerNet: Contains the linear layer classes for Floating point and Posit
+
 posit_test: Contains MNIST training and inference
 Using: https://github.com/stillwater-sc/universal
 
