@@ -1,0 +1,3 @@
+/home/amritha/Project/Operator/distrib/build/CMakeFiles/rebuild_cache.dir
+/home/amritha/Project/Operator/distrib/build/CMakeFiles/edit_cache.dir
+/home/amritha/Project/Operator/distrib/build/CMakeFiles/distrib.dir

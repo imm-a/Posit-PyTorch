@@ -1,5 +1,5 @@
-#ifndef _GEN_LOOKUP_81m_
-#define _GEN_LOOKUP_81m_
+#ifndef _GEN_LOOKUP_81_
+#define _GEN_LOOKUP_81_
 
 #include <universal/number/posit/posit.hpp>
 #include <universal/utility/convert_to.hpp>
@@ -15,7 +15,7 @@ using namespace std;
 template<typename Real>
 
 
-Real GetNum(const Real& a) {
+Real GetNum33(const Real& a) {
 	return a;
 }
 
@@ -23,10 +23,8 @@ Real GetNum(const Real& a) {
 
     // Returns a pointer to a newly created 2d array the array2D has size [height x width]
 
-std::string** create2DArrayMUL(int height, int width, int nval, int esval, int approx_type){
-	//using Real = sw::universal::posit<8,1>; 
-	//int nval = 8;
-	//int esval = 3;	
+std::string** create2DArray(int height, int width, int nval, int esval){
+	//using Real = sw::universal::posit<8,1>; 	
 	std::fstream newfile;
     std::fstream newfile1;
     string** Arr = 0;
@@ -41,17 +39,9 @@ std::string** create2DArrayMUL(int height, int width, int nval, int esval, int a
                   Arr[h][w] = "x";
            }
       }
-    std::string approx = "Accurate";
-    if(approx_type==1){
-        approx = "Approximate_1";
-    }
-    newfile.open("/home/amritha/Project/smallPosit/PositMultiplier_V/modular/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
- 	newfile1.open("/home/amritha/Project/smallPosit/PositMultiplier_V/modular/"+std::to_string(nval)+"_"+std::to_string(esval)+"/compare"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
-	
-    //newfile.open("lookup/PositMultiplier_V/"+approx+"/testcases"+std::to_string(nval)+""+std::to_string(0)+".txt", ios::in);
- 	//newfile1.open("lookup/PositMultiplier_V/"+approx+"/compare"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
-    
-    if(newfile.is_open() && newfile1.is_open()){
+    newfile.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+ 	newfile1.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+	if(newfile.is_open() && newfile1.is_open()){
 		std::string tp;
 		std::string tp1;
 		while(getline(newfile,tp) && getline(newfile1,tp1)){
