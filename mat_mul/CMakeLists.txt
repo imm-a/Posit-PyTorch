@@ -3,9 +3,10 @@ project(mat_mul)
 
 find_package(Torch REQUIRED)
 find_package(OpenMP REQUIRED)
+#find_package(UNIVERSAL CONFIG REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS} ${OpenMP_C_FLAGS}")
 # Define our library target
-
+include_directories("${CMAKE_CURRENT_LIST_DIR}/../universal/include")
 add_library(mat_mul SHARED op.cpp)
 # Enable C++14
 target_compile_features(mat_mul PRIVATE cxx_std_14)

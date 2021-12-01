@@ -4,7 +4,7 @@ import math
 import numpy as np
 torch.manual_seed(0)
 from NLayerNet import *
-
+#torch.ops.load_library("distrib/build/libdistrib.so")
 N = 64 #Batch size
 
 def accuracy(out, yb):
@@ -65,24 +65,63 @@ for t in range((n - 1) // N + 1):
     optimizer.step()
 
 
-print(accuracy(model(x_train),y_train))
-print(accuracy(model(x_valid[0:4*N]),y_valid[0:4*N]))
+print('Training Accuracy: ',accuracy(model(x_train),y_train))
+print('Validation Accuracy: ',accuracy(model(x_valid[0:128*N]),y_valid[0:128*N]))
 
 #Get layer weights
 weights = []
+weights_ = [] #for error calc
 bias = []
+#bias_posit = []
 for i in range(len(layers)-1):
+    w = model.linear[i].weight.t()
     weights.append(model.linear[i].weight.t())
+    weights_.append(torch.reshape(w,(1,w.shape[0]*w.shape[1])))
     b = model.linear[i].bias.t()
     bias.append(torch.reshape(b,(1,b.shape[0])))
-
-
-
+   
 #POSIT INFERENCE
 from datetime import datetime
 start=datetime.now()
 
 test_model = PositLayerNet(layers,activ,weights,bias)
-print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:4*N]),y_valid[0:4*N]))
+print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:128*N]),y_valid[0:128*N]))
 
 print('time elapsed: ',(datetime.now()-start).seconds)
+
+#CONVERT WEIGHTS & BIAS TO POSIT
+""" bias_posit = []
+weights_posit = []
+bias_posit.append(torch.ops.my_ops.distrib(bias[0], 1, bias[0].shape[1]))
+bias_posit.append(torch.ops.my_ops.distrib(bias[1], 1, bias[1].shape[1]))
+bias_posit.append(torch.ops.my_ops.distrib(bias[2], 1, bias[2].shape[1]))
+
+weights_posit.append(torch.ops.my_ops.distrib(weights_[0], 1, weights_[0].shape[1]))
+weights_posit.append(torch.ops.my_ops.distrib(weights_[1], 1, weights_[1].shape[1]))
+weights_posit.append(torch.ops.my_ops.distrib(weights_[2], 1, weights_[2].shape[1])) """
+
+#PLOTTING DISTRIBUTIONS
+""" import matplotlib.pyplot as plt
+plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':200})
+plt.figure()
+plt.hist(bias[0].detach().numpy()[0], alpha = 0.5, bins = 50, color='b', label = 'FP')
+plt.hist(bias_posit.detach().numpy()[0],alpha = 0.5,  bins = 50, color='r',label = "posit(8,2)")
+plt.show() """
+
+#CALCULATE AVG RELATIVE ERROR
+""" error = []
+for i in range(3):
+    sum = 0
+    for j in range(bias[i].shape[1]):
+        sum = sum + abs(bias[i][0][j]-bias_posit[i][0][j])/abs(bias[i][0][j])
+    sum = sum / bias[i].shape[1]
+    error.append(sum)
+print('Average Relative Error(Bias): ',(error[0]+error[1]+error[2])/3)
+error = []
+for i in range(3):
+    sum = 0
+    for j in range(weights_[i].shape[1]):
+        sum = sum + abs(weights_[i][0][j]-weights_posit[i][0][j])/abs(weights_[i][0][j])
+    sum = sum / weights_[i].shape[1]
+    error.append(sum)
+print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """

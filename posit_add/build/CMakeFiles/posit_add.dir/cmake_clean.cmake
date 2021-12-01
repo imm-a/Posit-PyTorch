@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/posit_add.dir/op.cpp.o"
+  "CMakeFiles/posit_add.dir/op.cpp.o.d"
   "libposit_add.pdb"
   "libposit_add.so"
 )

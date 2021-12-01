@@ -5,6 +5,6 @@ b = torch.rand(1,3)*10
 print(a)
 print(b)
 print("Adding...")
-print(torch.ops.my_ops.posit_add(a, b,3,3,1))
+print(torch.ops.my_ops.posit_add(a, b,3,3,1,1))
 print("\n")
 print(a+b)

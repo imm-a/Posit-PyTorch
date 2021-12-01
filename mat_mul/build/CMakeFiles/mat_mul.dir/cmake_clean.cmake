@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/mat_mul.dir/op.cpp.o"
+  "CMakeFiles/mat_mul.dir/op.cpp.o.d"
   "libmat_mul.pdb"
   "libmat_mul.so"
 )

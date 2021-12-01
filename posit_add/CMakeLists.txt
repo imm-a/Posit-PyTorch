@@ -5,6 +5,7 @@ find_package(Torch REQUIRED)
 find_package(OpenMP REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS} ${OpenMP_C_FLAGS}")
 # Define our library target
+include_directories("${CMAKE_CURRENT_LIST_DIR}/../universal/include")
 add_library(posit_add SHARED op.cpp)
 # Enable C++14
 target_compile_features(posit_add PRIVATE cxx_std_14)
