@@ -4,7 +4,11 @@ import math
 import numpy as np
 torch.manual_seed(0)
 from NLayerNet import *
+<<<<<<< HEAD
 #torch.ops.load_library("distrib/build/libdistrib.so")
+=======
+torch.ops.load_library("distrib/build/libdistrib.so")
+>>>>>>> 6aabb9d04472f0ffe2bc03a7d5aa9490fb957122
 N = 64 #Batch size
 
 def accuracy(out, yb):
@@ -85,7 +89,11 @@ from datetime import datetime
 start=datetime.now()
 
 test_model = PositLayerNet(layers,activ,weights,bias)
+<<<<<<< HEAD
 print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:128*N]),y_valid[0:128*N]))
+=======
+print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:8*N]),y_valid[0:8*N]))
+>>>>>>> 6aabb9d04472f0ffe2bc03a7d5aa9490fb957122
 
 print('time elapsed: ',(datetime.now()-start).seconds)
 
@@ -124,4 +132,8 @@ for i in range(3):
         sum = sum + abs(weights_[i][0][j]-weights_posit[i][0][j])/abs(weights_[i][0][j])
     sum = sum / weights_[i].shape[1]
     error.append(sum)
+<<<<<<< HEAD
 print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """
+=======
+print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """
+>>>>>>> 6aabb9d04472f0ffe2bc03a7d5aa9490fb957122

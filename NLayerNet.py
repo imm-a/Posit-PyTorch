@@ -60,7 +60,11 @@ class PositLayerNet(torch.nn.Module):
 
     def forward(self, x):
         for i in range(self.number-1):
+<<<<<<< HEAD
             linear = posit_forward(x,i,self.weights,self.bias,self.approx_type,16,8)
+=======
+            linear = posit_forward(x,i,self.weights,self.bias,self.approx_type,16,16)
+>>>>>>> 6aabb9d04472f0ffe2bc03a7d5aa9490fb957122
             activ = linear
             if(self.activation[i]=='relu'):
                 activ = linear.clamp(min=0)
