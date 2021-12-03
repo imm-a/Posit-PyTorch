@@ -12,13 +12,14 @@ Current status: Posit inference enabled using Linear layers and lookup tables. P
 To run:
  1. Edit the lists with layers and activations in posit_test.py
  2. To change (N,ES) configuration:
-    - Edit the "n1" and "es1" assignments in both functions in mat_mul/op.cpp
-    - ```
+    - Edit the "n1" and "es1" assignments in both functions in mat_mul/op.cpp. 
+    - To sync changes
+      ```
       cd mat_mul/build
       cmake -DCMAKE_PREFIX_PATH="$(python -c 'import torch.utils; print(torch.utils.cmake_prefix_path)')" ..
       make -j
       ```
-    - These commands have to be run everytime I change is made to the C++ files. Repear the same for "posit_add".
+    - These commands have to be run everytime a change is made to the C++ files. Repear the same for "posit_add".
   3. Run
      ```
      python posit_test.py
