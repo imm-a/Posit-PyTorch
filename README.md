@@ -1,5 +1,5 @@
 # Posit-PyTorch
-C++ operators: mat_mul and posit_add
+**C++ operators: mat_mul and posit_add**
 
 NLayerNet: Contains the linear layer classes for Floating point and Posit
 
