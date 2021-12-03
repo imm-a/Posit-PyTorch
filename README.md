@@ -19,7 +19,7 @@ To run:
       cmake -DCMAKE_PREFIX_PATH="$(python -c 'import torch.utils; print(torch.utils.cmake_prefix_path)')" ..
       make -j
       ```
-    - These commands have to be run everytime a change is made to the C++ files. Repear the same for "posit_add".
+    - These commands have to be run everytime a change is made to the C++ files. Repeat the same for "posit_add".
   3. Run
      ```
      python posit_test.py
