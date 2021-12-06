@@ -128,8 +128,6 @@ for i in range(3):
         sum = sum + abs(weights_[i][0][j]-weights_posit[i][0][j])/abs(weights_[i][0][j])
     sum = sum / weights_[i].shape[1]
     error.append(sum)
-<<<<<<< HEAD
+
 print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """
-=======
-print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """
->>>>>>> 6aabb9d04472f0ffe2bc03a7d5aa9490fb957122
+
