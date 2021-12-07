@@ -134,5 +134,7 @@ for i in range(3):
     sum = sum / weights_[i].shape[1]
     error.append(sum)
 
+
 print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3)
+
 
