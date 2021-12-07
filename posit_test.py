@@ -5,7 +5,7 @@ import numpy as np
 torch.manual_seed(0)
 from NLayerNet import *
 
-#torch.ops.load_library("distrib/build/libdistrib.so")
+torch.ops.load_library("distrib/build/libdistrib.so")
 
 N = 64 #Batch size
 
@@ -60,7 +60,6 @@ for t in range((n - 1) // N + 1):
     loss = criterion(y_pred, y_train[t*N:t*N+N])
     if t % 100 == 99:
         print(t, loss.item())
-
     # Zero gradients, perform a backward pass, and update the weights.
     optimizer.zero_grad()
     loss.backward()
@@ -87,14 +86,14 @@ from datetime import datetime
 start=datetime.now()
 
 test_model = PositLayerNet(layers,activ,weights,bias)
-
-print('Accuracy of Posit: ',accuracy(test_model(x_valid[0:128*N]),y_valid[0:128*N]))
-
-
-print('time elapsed: ',(datetime.now()-start).seconds)
-
+#f=open('/home/amritha/Project/Operator/result.txt','w')
+"""posit_accuracy = accuracy(test_model(x_valid[0:128*N]),y_valid[0:128*N])
+print('Accuracy of Posit: ',posit_accuracy)
+print('time elapsed: ',(datetime.now()-start).seconds)"""
+#f.write(str(posit_accuracy))
+#f.close
 #CONVERT WEIGHTS & BIAS TO POSIT
-""" bias_posit = []
+bias_posit = []
 weights_posit = []
 bias_posit.append(torch.ops.my_ops.distrib(bias[0], 1, bias[0].shape[1]))
 bias_posit.append(torch.ops.my_ops.distrib(bias[1], 1, bias[1].shape[1]))
@@ -102,7 +101,7 @@ bias_posit.append(torch.ops.my_ops.distrib(bias[2], 1, bias[2].shape[1]))
 
 weights_posit.append(torch.ops.my_ops.distrib(weights_[0], 1, weights_[0].shape[1]))
 weights_posit.append(torch.ops.my_ops.distrib(weights_[1], 1, weights_[1].shape[1]))
-weights_posit.append(torch.ops.my_ops.distrib(weights_[2], 1, weights_[2].shape[1])) """
+weights_posit.append(torch.ops.my_ops.distrib(weights_[2], 1, weights_[2].shape[1])) 
 
 #PLOTTING DISTRIBUTIONS
 """ import matplotlib.pyplot as plt
@@ -113,23 +112,27 @@ plt.hist(bias_posit.detach().numpy()[0],alpha = 0.5,  bins = 50, color='r',label
 plt.show() """
 
 #CALCULATE AVG RELATIVE ERROR
-""" error = []
+error = []
 for i in range(3):
     sum = 0
     for j in range(bias[i].shape[1]):
-        sum = sum + abs(bias[i][0][j]-bias_posit[i][0][j])/abs(bias[i][0][j])
+        diff= abs(bias[i].detach().numpy()[0][j]-bias_posit[i].detach().numpy()[0][j])/abs(bias[i].detach().numpy()[0][j])
+        #if (diff>1):
+           
+           #print(bias[i].detach().numpy()[0][j])
+           #print(bias_posit[i].detach().numpy()[0][j])
+        sum = sum + diff
     sum = sum / bias[i].shape[1]
     error.append(sum)
 print('Average Relative Error(Bias): ',(error[0]+error[1]+error[2])/3)
+#print(error)
 error = []
 for i in range(3):
     sum = 0
     for j in range(weights_[i].shape[1]):
-        sum = sum + abs(weights_[i][0][j]-weights_posit[i][0][j])/abs(weights_[i][0][j])
+        sum = sum + abs(weights_[i].detach().numpy()[0][j]-weights_posit[i].detach().numpy()[0][j])/abs(weights_[i].detach().numpy()[0][j])
     sum = sum / weights_[i].shape[1]
     error.append(sum)
-<<<<<<< HEAD
-print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """
-=======
-print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3) """
->>>>>>> 6aabb9d04472f0ffe2bc03a7d5aa9490fb957122
+
+print('Average Relative Error(Weights): ',(error[0]+error[1]+error[2])/3)
+

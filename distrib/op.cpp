@@ -25,7 +25,7 @@ return a;
 //this is fine to start off but we need to figure out accumulation.
 torch::Tensor distrib(torch::Tensor inputmat, int64_t dim1, int64_t dim2){
 	const int n1=8;	
-	const int es1=2;	
+	const int es1=0;	
 	int i; int j; float t; int k;
 	sw::universal::posit<n1,es1> Arr1[dim1][dim2];
 	//sw::universal::posit<n1,es1> Arr2[dim2][dim3];
