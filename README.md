@@ -1,6 +1,7 @@
 # Posit-PyTorch
 **C++ operators: mat_mul and posit_add**
 
+**Important: clone Universal separately if it doesn't work**
 NLayerNet: Contains the linear layer classes for Floating point and Posit
 
 posit_test: Contains MNIST training and inference
@@ -13,6 +14,11 @@ To run:
  1. Edit the lists with layers and activations in posit_test.py
  2. To change (N,ES) configuration:
     - Edit the "n1" and "es1" assignments in both functions in mat_mul/op.cpp. 
+      ```
+      rm -r build
+      mkdir build
+      ```
+    - The first time, make sure to delete the existing build directory after cloning.
     - To sync changes
       ```
       cd mat_mul/build
