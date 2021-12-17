@@ -41,12 +41,14 @@ std::string** create2DArrayMUL(int height, int width, int nval, int esval, int a
                   Arr[h][w] = "x";
            }
       }
-    std::string approx = "Accurate";
+    std::string approx = "modular";
     if(approx_type==1){
         approx = "Approximate_1";
     }
-    newfile.open("/home/amritha/Project/smallPosit/PositMultiplier_V/modular/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
- 	newfile1.open("/home/amritha/Project/smallPosit/PositMultiplier_V/modular/"+std::to_string(nval)+"_"+std::to_string(esval)+"/compare"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
+    if(approx_type==2){
+approx = "Approximate_2";}
+    newfile.open("/home/amritha/Project/smallPosit/PositMultiplier_V/"+approx+"/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
+ 	newfile1.open("/home/amritha/Project/smallPosit/PositMultiplier_V/"+approx+"/"+std::to_string(nval)+"_"+std::to_string(esval)+"/compare"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
 	
     //newfile.open("lookup/PositMultiplier_V/"+approx+"/testcases"+std::to_string(nval)+""+std::to_string(0)+".txt", ios::in);
  	//newfile1.open("lookup/PositMultiplier_V/"+approx+"/compare"+std::to_string(nval)+""+std::to_string(esval)+".txt", ios::in);
