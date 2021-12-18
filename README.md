@@ -30,7 +30,7 @@ To run:
  2. In NLayerNet: Change parameters such as n_mult, n_add and approx_type as required. (n_mult = number of parallel multiplications, n_add = number of parallel additions, approx_type = 0 for accurate and 1 for reduced precision)
  4. To change (N,ES) configuration:
     - Edit the "n1" and "es1" assignments in both functions in mat_mul/op.cpp. 
-    - The first time, delete the existing build directory and make a new one.
+    - The first time, delete the existing build directory and make a new one inside the mat_mul and posid_add directories.
       ```
       rm -r build
       mkdir build
