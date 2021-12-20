@@ -17,15 +17,11 @@ using namespace std::chrono;
 using namespace std;
 using namespace torch::indexing;
 
-//template<typename Real>
-/*Real GetNum(const Real& a ){
-return a;
-}*/
-//inputmat2 is simply a vector
 torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t dim1, int64_t dim2,string** lookup_add){
 	const int n1 = 8;
 	const int es1 = 2;		
-		
+        assert(("n1 must be 6,7 or 8", n1>=6 && n1<=8));
+	assert(("Check es1 value", es1<(n1-3) && es1>=0));	
 	int i; int j; float t;
 	sw::universal::posit<n1,es1> Arr1[dim1][dim2];
 	sw::universal::posit<n1,es1> Arr2[dim1][dim2];
@@ -37,7 +33,7 @@ torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t d
 	
 	Arr1[i][j] = inputmat1[i][j].item<double>();
 	Arr2[i][j] = inputmat2[0][j].item<double>();
-	//std::cout<<Arr2[i][j]<<::endl;
+	
 	std::string x_a = info_print(Arr1[i][j]);
     	std::string x1_a = x_a.substr(x_a.find("raw"),x_a.find("decode"));
     	std::string x2_a = x1_a.substr(5,n1);
@@ -52,7 +48,7 @@ torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t d
     	p.setbits(p_);
     	p.get();
 	Arr3[i][j] = (double)p; 
-	//std::cout<<Arr3[i][j]<<::endl;
+	
 	tensor[i][j] = Arr3[i][j];
 	}
 	 
@@ -60,26 +56,26 @@ torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t d
 	
   torch::Tensor output = tensor;
   return output;
-  //return output.clone();
-	
+  
 }
 torch::Tensor posit_add(torch::Tensor inputmat1,torch::Tensor inputmat2,int64_t dim1, int64_t dim2, int64_t n_add, int64_t approx_type){
 	const int n1=8;	
 	const int es1=2;
-	//static string** Arr = create2DArrayMUL(256,256, n1, es1); // generating lookup table
+	assert(("n1 must be 6,7 or 8", n1>=6 && n1<=8));
+	assert(("Check es1 value", es1<(n1-3) && es1>=0));
+	 // generating lookup table
 	static string** Arr_add = create2DArray(int(pow(2,n1)),int(pow(2,n1)), n1, es1,0);
 	int i;
 	torch::Tensor output;
-	//torch::Tensor output_final;
+	
 	int64_t bsize = (floor((dim1-1)/n_add)+1);
 	at::Tensor output_final = at::ones({dim1, dim2}, at::kDouble);
-	//std::cout<<bsize<<::endl;
+	
 
 
 	#pragma omp parallel for
 for(i=0;i<n_add;i++){
-	//std::cout<<"printing:"<<inputmat1.index({Slice(i*bsize,i*bsize+bsize)})<<::endl;
-	//std::cout<<"add:"<<i<<::endl;
+	
 output = pos_add(inputmat1.index({Slice(i*bsize,i*bsize+bsize)}),inputmat2,bsize,dim2,Arr_add);
 output_final.index_put_({Slice(i*bsize,i*bsize+bsize)},output);
 }

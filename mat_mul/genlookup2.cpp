@@ -66,41 +66,4 @@ std::string** create2DArray(int height, int width, int nval, int esval){
 }
  #endif   
     
-/*int main(void) {
-using Real = sw::universal::posit<8,1>; 	
    
-   
-
-    GetNum(0.5);
-    string** Arr = create2DArray(256,256);
-
-
-	
-	
-    Real num1;
-    Real num2;
-    std::cout << "Enter num1:";
-    std::cin >> num1;
-    std::cout << "Enter num2:";
-    std::cin >> num2;
-	//convert posit to string
-	std::string x_a = info_print(num1);
-    std::string x1_a = x_a.substr(x_a.find("raw"),x_a.find("decode"));
-    std::string x2_a = x1_a.substr(5,8);
-    std::string x_b = info_print(num2);
-    std::string x1_b = x_b.substr(x_b.find("raw"),x_b.find("decode"));
-    std::string x2_b = x1_b.substr(5,8);
-    
-    int idx1 = stoi(x2_a,0,2);
-    int idx2 = stoi(x2_b,0,2);
-    std::string res = Arr[idx1][idx2];
-    
-    //decode result to posit
-    int p_=stoi(res,0,2);
-    Real p;
-    p.setbits(p_);
-    p.get();
-    std::cout<<"Answer: "<<p<<::endl;
-
-}*/
-
