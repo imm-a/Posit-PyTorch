@@ -2,8 +2,11 @@
 Posit-PyTorch is a framework to carry out Neural Network inference using various Posit operators. The hardware is based on [smallPosit HDL](https://github.com/starbrilliance/SmallPositHDL).
 
 **C++ operators: mat_mul and posit_add**
+ - mat_mul: Performs posit matrix-vector multiplication
+ - posit_add: Performs posit matrix addition
+ - distrib: Returns quantized values in set Posit configuration 
 
-**Important: Clone Universal separately if the folder is empty*
+**Important: Clone Universal separately if the folder is empty**
 ```
 git clone https://github.com/stillwater-sc/universal.git
 ```
@@ -40,7 +43,7 @@ To run:
       cmake -DCMAKE_PREFIX_PATH="$(python -c 'import torch.utils; print(torch.utils.cmake_prefix_path)')" ..
       make -j
       ```
-    - Run ``` make -j ``` everytime a change is made to the C++ files. Repeat the same for "posit_add".
+    - Run ``` make -j ``` everytime a change is made to the C++ files. Repeat the same for "posit_add" and "distrib".
   3. Run
      ```
      python posit_test.py
