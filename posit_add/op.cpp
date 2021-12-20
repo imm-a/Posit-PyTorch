@@ -23,8 +23,8 @@ return a;
 }*/
 //inputmat2 is simply a vector
 torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t dim1, int64_t dim2,string** lookup_add){
-	const int n1 = 7;
-	const int es1 = 0;		
+	const int n1 = 8;
+	const int es1 = 2;		
 		
 	int i; int j; float t;
 	sw::universal::posit<n1,es1> Arr1[dim1][dim2];
@@ -64,8 +64,8 @@ torch::Tensor pos_add(torch::Tensor inputmat1,torch::Tensor inputmat2, int64_t d
 	
 }
 torch::Tensor posit_add(torch::Tensor inputmat1,torch::Tensor inputmat2,int64_t dim1, int64_t dim2, int64_t n_add, int64_t approx_type){
-	const int n1=7;	
-	const int es1=0;
+	const int n1=8;	
+	const int es1=2;
 	//static string** Arr = create2DArrayMUL(256,256, n1, es1); // generating lookup table
 	static string** Arr_add = create2DArray(int(pow(2,n1)),int(pow(2,n1)), n1, es1,0);
 	int i;

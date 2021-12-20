@@ -69,7 +69,7 @@ for t in range((n - 1) // N + 1):
 
 
 print('Training Accuracy: ',accuracy(model(x_train),y_train))
-print('Validation Accuracy: ',accuracy(model(x_valid[0:128*N]),y_valid[0:128*N]))
+print('Validation Accuracy: ',accuracy(model(x_valid[0:4*N]),y_valid[0:4*N]))
 
 #Get layer weights
 weights = []

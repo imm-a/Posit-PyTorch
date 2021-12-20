@@ -39,12 +39,12 @@ std::string** create2DArray(int height, int width, int nval, int esval, int appr
                   Arr[h][w] = "x";
            }
       }
-   // std::string approx = "Accurate";
+   std::string approx = "Accurate";
         
-    //newfile.open("lookup/PositAdder_V/"+approx+"/testcases"+std::to_string(nval)+std::to_string(0)+".txt", ios::in);
- 	//newfile1.open("lookup/PositAdder_V/"+approx+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
-    newfile.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
- 	newfile1.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+    newfile.open("lookup/PositAdder_V/"+approx+"/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+     newfile1.open("lookup/PositAdder_V/"+approx+"/"+std::to_string(nval)+"_"+std::to_string(esval)+"/compare"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+   // newfile.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/testcases"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
+ //	newfile1.open("/home/amritha/Project/smallPosit/PositAdder_V/TOPMOD/"+std::to_string(nval)+"_"+std::to_string(esval)+"/result"+std::to_string(nval)+std::to_string(esval)+".txt", ios::in);
 	if(newfile.is_open() && newfile1.is_open()){
 		std::string tp;
 		std::string tp1;
