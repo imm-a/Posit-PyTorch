@@ -8,7 +8,7 @@ Posit-PyTorch is a framework to carry out Neural Network inference using various
  - posit_add: Performs posit matrix addition
  - distrib: Returns quantized values in set Posit configuration 
 
-**Important: Clone Universal separately if the folder is empty**
+**Important: Clone Universal separately inside Posit-PyTorch folder if the universal folder is empty**
 ```
 git clone https://github.com/stillwater-sc/universal.git
 ```
