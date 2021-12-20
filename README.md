@@ -3,17 +3,14 @@ Posit-PyTorch is a framework to carry out Neural Network inference using various
 
 **C++ operators: mat_mul and posit_add**
 
-**Important: Clone Universal separately if it doesn't work**
-
+**Important: Clone Universal separately if the folder is empty*
+```
+git clone https://github.com/stillwater-sc/universal.git
+```
 NLayerNet: Contains the linear layer classes for Floating point and Posit
 
 posit_test: Contains MNIST training and inference
 
-Using: https://github.com/stillwater-sc/universal
-
-```
-git clone https://github.com/stillwater-sc/universal.git
-```
 Dependencies:
 1. PyTorch: Install with appropriate settings from https://pytorch.org/
 2. OpenMP
