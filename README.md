@@ -31,7 +31,7 @@ To run:
  1. Edit the lists with layers and activations in posit_test.py
  2. In NLayerNet: Change parameters such as n_mult, n_add and approx_type as required. (n_mult = number of parallel multiplications, n_add = number of parallel additions, approx_type = 0 for accurate and 1 for reduced precision)
  4. To change (N,ES) configuration:
-    - Edit the "n1" and "es1" assignments in both functions in mat_mul/op.cpp. 
+    - Edit the "n1" and "es1" assignments in **both functions** in mat_mul/op.cpp. 
     - The first time, delete the existing build directory and make a new one inside the mat_mul and posit_add directories.
       ```
       rm -r build
@@ -43,7 +43,7 @@ To run:
       cmake -DCMAKE_PREFIX_PATH="$(python -c 'import torch.utils; print(torch.utils.cmake_prefix_path)')" ..
       make -j
       ```
-    - Run ``` make -j ``` everytime a change is made to the C++ files. Repeat the same for "posit_add" and "distrib".
+    - Run ``` make -j ``` everytime a change is made to the C++ files. **Repeat the same for "posit_add" and "distrib"**.
   3. Run
      ```
      python posit_test.py
