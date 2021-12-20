@@ -1,6 +1,7 @@
 # Posit-PyTorch
 Posit-PyTorch is a framework to carry out Neural Network inference using various Posit operators. The hardware is based on [smallPosit HDL](https://github.com/starbrilliance/SmallPositHDL).
-**Current support only for n=6,7,8
+
+**Current support only for n=6,7,8**
 **C++ operators: mat_mul and posit_add**
  - mat_mul: Performs posit matrix-vector multiplication
  - posit_add: Performs posit matrix addition
