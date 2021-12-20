@@ -45,7 +45,8 @@ To run:
       cmake -DCMAKE_PREFIX_PATH="$(python -c 'import torch.utils; print(torch.utils.cmake_prefix_path)')" ..
       make -j
       ```
-    - Run ``` make -j ``` everytime a change is made to the C++ files. **Repeat the same for "posit_add" and "distrib"**.
+    - **Repeat the same for "posit_add" and "distrib"**.
+    - Run ``` make -j ``` everytime a change is made to the C++ files. 
   3. Run
      ```
      python posit_test.py
