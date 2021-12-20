@@ -15,6 +15,7 @@ Dependencies:
 1. PyTorch: Install with appropriate settings from https://pytorch.org/
 2. OpenMP
 3. NumPy
+4. matplotlib
 
 
 ***Current status:*** 
