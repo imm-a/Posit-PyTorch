@@ -69,7 +69,7 @@ for t in range((n - 1) // N + 1):
 
 
 print('Training Accuracy: ',accuracy(model(x_train),y_train))
-print('Validation Accuracy: ',accuracy(model(x_valid[0:4*N]),y_valid[0:4*N]))
+print('Validation Accuracy: ',accuracy(model(x_valid[0:128*N]),y_valid[0:128*N]))
 
 #Get layer weights
 weights = []
@@ -89,7 +89,7 @@ start=datetime.now()
 
 test_model = PositLayerNet(layers,activ,weights,bias)
 
-posit_accuracy = accuracy(test_model(x_valid[0:4*N]),y_valid[0:4*N])
+posit_accuracy = accuracy(test_model(x_valid[0:128*N]),y_valid[0:128*N]) #Make sure this is a multiple of N
 print('Accuracy of Posit: ',posit_accuracy)
 print('time elapsed: ',(datetime.now()-start).seconds)
 
