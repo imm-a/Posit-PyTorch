@@ -13,9 +13,10 @@ posit_test: Contains MNIST training and inference
 
 Dependencies:
 1. PyTorch: Install with appropriate settings from https://pytorch.org/
-2. OpenMP
-3. NumPy
-4. matplotlib
+2. CMake (latest version)
+3. OpenMP
+4. NumPy
+5. matplotlib
 
 
 ***Current status:*** 
